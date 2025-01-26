@@ -10,20 +10,20 @@ from langchain_text_splitters import CharacterTextSplitter
 load_dotenv()
 
 from pinecone import Pinecone, ServerlessSpec
-os.environ['PINECONE_API_KEY'] = ''
-pc = Pinecone(api_key='')
+os.environ['PINECONE_API_KEY'] = os.getenv("PINECONE_API_KEY")
+pc = Pinecone(api_key=os.getenv("PINECONE_API_KEY"))
 
 openai_ef = embedding_functions.OpenAIEmbeddingFunction("",
                                                         model_name="text-embedding-3-large"
                                                         )
 os.environ["OPENAI_API_TYPE"] = "openai"
-os.environ["OPENAI_API_KEY"] = ""
+os.environ["OPENAI_API_KEY"] = os.getenv("OPENAI_API_TYPE")
 def upload_dbvector():
     embeddings_model = OpenAIEmbeddings(model="text-embedding-3-large")
     path_folder_main = "./markdown_files/"
     folder_main = os.listdir(path_folder_main)
-    namespace = "connectivity"
-    index = "hackathon"
+    namespace = os.getenv("NAMESPACE_PINECONE")
+    index = os.getenv("INDEX_PINECONE")
     c=0
     total = 0
 
@@ -45,7 +45,7 @@ def upload_dbvector():
                 text.metadata["type_document"] = "norm"
             docsearch = PineconeVectorStore.from_documents(
                 documents=doc,
-                index_name="hackathon",
+                index_name=index,
                 embedding=embeddings_model,
                 namespace=namespace
             )
