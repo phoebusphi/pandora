@@ -19,8 +19,8 @@ class GAtelco:
 
     num_routers = 1
 
-    def __init__(self, mu, eta,
-                        generations:int=2000,
+    def __init__(self, mu=0.75, eta=0.22,
+                        generations:int=3000,
                         people_priority:dict={"tipo1":50,"tipo2":200,"tipo3":800},
                         pop_size:int=100):
         self.generations=generations
@@ -170,6 +170,7 @@ class GAtelco:
         ax[1].set_title("Best latency on Priority 1")
         ax[1].set_xlabel("generation")
         ax[1].set_ylabel("Latency (ms)")
+        fig.tight_layout()
         plt.savefig("optimal.jpg")
         users=self.init_people()
         for i in range(self.generations):
@@ -230,5 +231,5 @@ def create_gif(image_folder, gif_filename, duration=100):
 # Ejemplo de uso
 
 # Reemplaza 'ruta/a/tu/carpeta/de/imagenes' con la ruta real de tus imágenes
-GAtelco(mu=0.75, eta=0.22, generations=2000).GA()
-create_gif('./images_gif/', 'output.gif')
+#GAtelco(mu=0.75, eta=0.22, generations=2000).GA()
+#create_gif('./images_gif/', 'output.gif')
