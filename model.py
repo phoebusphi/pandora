@@ -12,7 +12,7 @@ load_dotenv()
 os.environ["OPENAI_API_TYPE"] = "openai"
 os.environ["MODEL_OPENAI_4O"] = "gpt-4o"
 os.environ["OPENAI_API_KEY"] = ""
-os.environ['PINECONE_API_KEY'] = "pcsk_5UJLTj_LqwcnW19CFs9WH2Sb5SR5jqLdyas32u4vUGG2HHAAy4c7XBMEQiVCAbP8cRRukU"
+os.environ['PINECONE_API_KEY'] = ""
 
 # prompt_db_vector = """Basado en los estándares ITU (específicamente ITU-T Y.1541 e ITU-T G.1010), necesito una distribución de ancho de banda para diferentes prioridades de casos de uso.
 # La información que proporciono es la siguiente:
