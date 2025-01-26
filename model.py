@@ -12,7 +12,7 @@ load_dotenv()
 os.environ["OPENAI_API_TYPE"] = "openai"
 os.environ["MODEL_OPENAI_4O"] = "gpt-4o"
 os.environ["OPENAI_API_KEY"] = ""
-os.environ['PINECONE_API_KEY'] = ""
+os.environ['PINECONE_API_KEY'] = "pcsk_5UJLTj_LqwcnW19CFs9WH2Sb5SR5jqLdyas32u4vUGG2HHAAy4c7XBMEQiVCAbP8cRRukU"
 
 # prompt_db_vector = """Basado en los estándares ITU (específicamente ITU-T Y.1541 e ITU-T G.1010), necesito una distribución de ancho de banda para diferentes prioridades de casos de uso.
 # La información que proporciono es la siguiente:
@@ -125,11 +125,11 @@ def improve_response(original_response:str,pos, latency,bw_total):
 
 def consult_db(question,pos, latency, bw_total):
     pc = Pinecone(api_key=os.getenv("PINECONE_API_KEY"))
-    index_name = os.getenv("INDEX_PINECONE")
+    index_name = "hackathon"
     index = pc.Index(index_name)
     vectorstore = pinelang(index, embeddings_model.embed_query,"text",
                                         distance_strategy=DistanceStrategy.EUCLIDEAN_DISTANCE)
     response = vectorstore.similarity_search(question,
-                                            namespace=os.getenv("NAMESPACE_PINECONE"), k=10)
+                                            namespace="connectivity", k=10)
     improved_response = improve_response(response[0].page_content,pos, latency,bw_total)
     return improved_response.content
