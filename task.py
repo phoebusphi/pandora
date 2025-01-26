@@ -40,19 +40,6 @@ def check_folder(name_folder:str, delete=False):
         else:
             pass
 
-def check_files():
-    existing_files = list(os.listdir(path))
-    if len(existing_files) > 0:
-        file_to_remove = existing_files[0]
-        file_path = os.path.join(path, file_to_remove)
-        try:
-            os.remove(file_path)
-            print(f"Archivo {file_to_remove} eliminado exitosamente.")
-        except PermissionError:
-            print(f"No se puede eliminar el archivo {file_to_remove}: Permiso denegado.")
-        except FileNotFoundError:
-            print(f"No se encontró el archivo {file_to_remove}.")
-
 
 parser = LlamaParse(
     api_key="",
