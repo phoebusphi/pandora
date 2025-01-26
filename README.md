@@ -1,6 +1,6 @@
 # P.A.N.D.O.R.A.: Priority-Aware Network Planning AI
 
-
+![PANDORA Cover](pandora_cover.jpg)
 
 ## Overview
 P.A.N.D.O.R.A. is a Python-based project that utilizes a genetic algorithm to optimize network distributions. The core algorithm, implemented in `optimization_distribution.py`, employs mutation operators on router coordinates and a single-point crossover for genetic operations.
