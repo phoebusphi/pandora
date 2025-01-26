@@ -43,4 +43,4 @@ def create_gif(image_folder, gif_filename, duration=500):
 # Ejemplo de uso
 
 # Reemplaza 'ruta/a/tu/carpeta/de/imagenes' con la ruta real de tus imágenes
-create_gif('./images_gif/', 'output.gif')
+
